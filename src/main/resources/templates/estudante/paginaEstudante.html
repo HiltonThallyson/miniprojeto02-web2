@@ -12,12 +12,12 @@
   
        <h1><p th:text="' Olá, ' + ${estudante.nome}"></h1>
         <p th:text="'Matrícula: ' + ${estudante.id} "></p>
-        <p th:text="'Seu curso é:  ' + ${estudante.curso}"></p>
+        <p th:text="'Seu curso é:  ' + ${estudante.curso.descricao}"></p>
         
 
         <br><br>
-        <a href="getListaEstudantes">Ver lista de estudantes</a><br>
-        <a href="showForm">Formulário de estudantes</a><br>
+        <a href="/estudante/getListaEstudantes">Ver lista de estudantes</a><br>
+        <a href="/estudante/showForm">Formulário de estudantes</a><br>
     
 </body>
 </html>

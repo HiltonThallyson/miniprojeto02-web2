@@ -2,6 +2,8 @@ package com.jeanlima.mvcappdatajpa.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jeanlima.mvcappdatajpa.model.Estudante;
+import com.jeanlima.mvcappdatajpa.service.CursoService;
 import com.jeanlima.mvcappdatajpa.service.EstudanteService;
 
 
@@ -23,11 +27,16 @@ public class EstudanteController {
     @Qualifier("estudanteServiceImpl")
     EstudanteService estudanteService;
 
+    @Autowired
+    @Qualifier("cursoServiceImpl")
+    CursoService cursoService;
+
 
     @RequestMapping("/showForm")
     public String showFormEstudante(Model model){
 
         model.addAttribute("estudante", new Estudante());
+        model.addAttribute("cursos", cursoService.getCursos());
         return "estudante/formEstudante";
     }
 
@@ -38,7 +47,13 @@ public class EstudanteController {
 
 
         model.addAttribute("estudante", novoEstudante);
-        return "estudante/paginaEstudante";
+        return "redirect:getListaEstudantes";
+    }
+
+    @GetMapping("/deletarEstudanteById")
+    public String deletarEstudante(@RequestParam(value = "id") Integer id) {
+        estudanteService.deletarEstudante(estudanteService.getEstudanteById(id));
+        return "redirect:getListaEstudantes";
     }
 
     @RequestMapping("/getListaEstudantes")

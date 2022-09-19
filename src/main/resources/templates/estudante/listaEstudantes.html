@@ -17,7 +17,7 @@
     <ul>
         <li th:each="estudante : ${estudantes}">
             <span
-                th:text="'Nome:  ' + ${estudante.nome} + ' - Curso:  ' + ${estudante.curso} " />
+                th:text="'Nome:  ' + ${estudante.nome} + ' - Curso:  ' + ${estudante.curso.descricao} " />
         </li>
     </ul>
     <br><br>
@@ -29,19 +29,22 @@
             <th th:text="Nome"></th>
             <th th:text="Curso"></th>
             <th>Detalhes</th>
+            <!-- <th>Deletar</th> -->
           </tr>
         </thead>
         <tbody>
           <tr th:each="estudante: ${estudantes}">
             <td th:text="${estudante.id}"></td>
             <td th:text="${estudante.nome}"></td>
-            <td th:text="${estudante.curso}"></td>
+            <td th:text="${estudante.curso.descricao}"></td>
             <td><a th:href="@{/estudante/getEstudanteById/{id}(id=${estudante.id})}">veja aqui</a></td>
+            <td><a th:href="@{/estudante/deletarEstudanteById(id=${estudante.id})}">deletar</a></td>
           </tr>
         </tbody>
       </table>
     <br><br>
     <a href="showForm">Formulário de estudantes</a><br>
+    <a href="/">Menu</a><br>
 
 </body>
 

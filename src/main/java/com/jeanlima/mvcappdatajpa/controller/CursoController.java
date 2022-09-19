@@ -1,6 +1,6 @@
 package com.jeanlima.mvcappdatajpa.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -37,7 +37,7 @@ public class CursoController {
 
     @RequestMapping("/listarCursos")
     public String listarCursos(Model model) {
-        ArrayList<Curso> cursos = cursoService.getCursos();
+        List<Curso> cursos = cursoService.getCursos();
         model.addAttribute("cursos", cursos);
         return "curso/listarCursos";
     }
@@ -55,7 +55,7 @@ public class CursoController {
         model.addAttribute("curso", curso);
         return "curso/editarCurso";
     }
-    
+
     @RequestMapping("/atualizarCurso")
     public String atualizarCurso(@ModelAttribute("curso") Curso curso, Model model) {
         cursoService.atualizarCurso(curso);

@@ -12,7 +12,9 @@
 
     <form action="#" th:action="@{/estudante/addEstudante}" th:object="${estudante}" method="post">
         <p>Nome: <input type="text" th:field="*{nome}" placeholder="Insira seu nome" /></p>
-        <p>Curso: <input type="text" th:field="*{curso}" placeholder="Insira o curso" /></p>
+        <select th:field="*{curso}">
+            <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.descricao}"></option>
+        </select>
         
         <p><input type="submit" value="Adicionar" /></p>
     </form>
