@@ -66,9 +66,19 @@ public class Estudante {
         this.curso = curso;
     }
 
+    
+    public Avatar getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(Avatar avatar) {
+        this.avatar = avatar;
+    }
+
     @Override
     public String toString() {
         return "Estudante [curso=" + curso + ", id=" + id + ", nome=" + nome + "]";
     }
+
 
 }

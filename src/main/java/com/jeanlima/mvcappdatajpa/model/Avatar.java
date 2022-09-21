@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,7 +19,8 @@ public class Avatar {
     @Column(length = 50)
     private String nomeFantasia;
 
-    @OneToOne(mappedBy = "estudante")
+    @OneToOne()
+    @JoinColumn(name = "estudante_id")
     private Estudante estudante;
 
     public Integer getId() {
@@ -37,11 +39,23 @@ public class Avatar {
         this.nomeFantasia = nomeFantasia;
     }
 
+    
+    public Estudante getEstudante() {
+        return estudante;
+    }
+
+    public void setEstudante(Estudante estudante) {
+        this.estudante = estudante;
+    }
+
     public Avatar() {
     }
 
     public Avatar(String nomeFantasia) {
         this.nomeFantasia = nomeFantasia;
     }
+
+
+
 
 }

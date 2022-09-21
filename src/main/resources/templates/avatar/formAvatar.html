@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de avatar</title>
+</head>
+<body>
+    <form action="#" th:action="@{/avatar/addAvatar}" th:object="${avatar}" method="post">
+        <p>Nome Fantasia: <input type="text" th:field="*{nomeFantasia}" placeholder="Insira seu nome fantasia" /></p>
+        <select th:field="*{estudante}">
+            <option th:each="estudante : ${estudantes}" th:value="${estudante.id}" th:text="${estudante.nome}"></option>
+        </select>
+        
+        <p><input type="submit" value="Adicionar" /></p>
+    </form>
+    <br><br>
+        <a href="/">Menu</a><br>
+</body>
+</html>
