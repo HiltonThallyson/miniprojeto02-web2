@@ -33,6 +33,7 @@ public class AvatarController {
     @RequestMapping("/addAvatar")
     public String addAvatar(@ModelAttribute("avatar") Avatar avatar, Model model) {
         Avatar newAvatar = avatarService.salvarAvatar(avatar);
+        estudanteService.getEstudanteById(avatar.getEstudante().getId()).setAvatar(avatar);
         model.addAttribute("avatar", newAvatar);
         return "redirect:getListaAvatares";
     }
