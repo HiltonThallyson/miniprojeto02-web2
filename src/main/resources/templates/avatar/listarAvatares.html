@@ -14,8 +14,9 @@
     <table>
         <thead>
             <tr>
-                <th>Nome fantasia&nbsp</th>
+                <th>Nome fantasia</th>
                 <th>Nome do estudante</th>
+                <th>Curso</th>
 
             </tr>
         </thead>
@@ -23,6 +24,7 @@
             <tr th:each="avatar: ${avatares}">
                 <td th:text="${avatar.nomeFantasia}"></td>
                 <td th:text="${avatar.estudante.nome}"></td>
+                <td th:text="${avatar.estudante.curso.descricao}"></td>
             </tr>
         </tbody>
 
